@@ -3,7 +3,8 @@
 <head>
 	<title>URL Form</title>
 	<script>
-		function updateUrl() {
+		function updateUrl(e) {
+			e.preventDefault();
 			var name = document.getElementById("name").value;
 			var year = document.getElementById("year").value;
             if(name!=""&&year!=""){
@@ -28,12 +29,13 @@
 	</script>
 </head>
 <body>
-	<form>
+	<form id="nameform" onsubmit="updateUrl(e)">
 		<label for="name">Name:</label>
 		<input type="text" id="name" name="name"><br><br>
 		<label for="year">Year:</label>
 		<input type="number" id="year" name="year"><br><br>
-		<input type="button" id="button" value="Submit" onclick="updateUrl()"><br><br>
+		<button type="submit"  id="button" form="nameform">Submit</button>
+		<br><br>
 	</form>
 	<h3 id="url">https://localhost:8080/</h3>
 </body>
